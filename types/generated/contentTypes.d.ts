@@ -1,5 +1,34 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
+export interface ApiOrdenOrden extends Struct.CollectionTypeSchema {
+  collectionName: 'ordenes';
+  info: {
+    singularName: 'orden';
+    pluralName: 'ordenes';
+    displayName: 'Ordenes';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    fechaInicio: Schema.Attribute.Date;
+    fechaCaducidad: Schema.Attribute.Date;
+    usuarios: Schema.Attribute.Relation<
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::orden.orden'>;
+  };
+}
+
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
   info: {
@@ -441,7 +470,6 @@ export interface PluginUsersPermissionsUser
     displayName: 'User';
   };
   options: {
-    timestamps: true;
     draftAndPublish: false;
   };
   attributes: {
@@ -470,6 +498,8 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
+    planPagado: Schema.Attribute.Boolean;
+    ordene: Schema.Attribute.Relation<'manyToOne', 'api::orden.orden'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -850,6 +880,7 @@ export interface AdminTransferTokenPermission
 declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
+      'api::orden.orden': ApiOrdenOrden;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
