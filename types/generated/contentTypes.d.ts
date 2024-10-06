@@ -1,20 +1,58 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface ApiOrdenOrden extends Struct.CollectionTypeSchema {
-  collectionName: 'ordenes';
+export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
+  collectionName: 'orders';
   info: {
-    singularName: 'orden';
-    pluralName: 'ordenes';
-    displayName: 'Ordenes';
+    singularName: 'order';
+    pluralName: 'orders';
+    displayName: 'Order';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
-    fechaInicio: Schema.Attribute.Date;
-    fechaCaducidad: Schema.Attribute.Date;
-    usuarios: Schema.Attribute.Relation<
-      'oneToMany',
+    startDate: Schema.Attribute.Date;
+    expirationDate: Schema.Attribute.Date;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    selectedPlan: Schema.Attribute.Enumeration<
+      ['BASIC', 'ADVANCED', 'ENTERPRISE', 'API', 'CUSTOM']
+    >;
+    statusPlan: Schema.Attribute.Enumeration<
+      ['pending', 'available', 'expired', 'end']
+    >;
+    url: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
+  };
+}
+
+export interface ApiReviewReview extends Struct.CollectionTypeSchema {
+  collectionName: 'reviews';
+  info: {
+    singularName: 'review';
+    pluralName: 'reviews';
+    displayName: 'Review';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    review: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
       'plugin::users-permissions.user'
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -25,7 +63,7 @@ export interface ApiOrdenOrden extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::orden.orden'>;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::review.review'>;
   };
 }
 
@@ -498,8 +536,8 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    planPagado: Schema.Attribute.Boolean;
-    ordene: Schema.Attribute.Relation<'manyToOne', 'api::orden.orden'>;
+    reviews: Schema.Attribute.Relation<'oneToMany', 'api::review.review'>;
+    orders: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -880,7 +918,8 @@ export interface AdminTransferTokenPermission
 declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
-      'api::orden.orden': ApiOrdenOrden;
+      'api::order.order': ApiOrderOrder;
+      'api::review.review': ApiReviewReview;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
