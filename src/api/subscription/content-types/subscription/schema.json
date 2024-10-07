@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscriptions",
+  "info": {
+    "singularName": "subscription",
+    "pluralName": "subscriptions",
+    "displayName": "Subscription",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "plan": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "wooID": {
+      "unique": true,
+      "type": "integer"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "subscriptions"
+    },
+    "url": {
+      "type": "string"
+    },
+    "statusPlan": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "active",
+        "on-hold",
+        "cancelled",
+        "expired",
+        "pending-cancel"
+      ],
+      "default": "pending"
+    }
+  }
+}

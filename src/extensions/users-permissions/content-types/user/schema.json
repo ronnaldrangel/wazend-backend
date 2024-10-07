@@ -65,16 +65,22 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "reviews": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::review.review",
-      "mappedBy": "user"
-    },
     "orders": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::order.order",
+      "mappedBy": "user"
+    },
+    "name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "subscriptions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::subscription.subscription",
       "mappedBy": "user"
     }
   }

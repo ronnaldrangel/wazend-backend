@@ -37,24 +37,32 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiReviewReview extends Struct.CollectionTypeSchema {
-  collectionName: 'reviews';
+export interface ApiSubscriptionSubscription
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'subscriptions';
   info: {
-    singularName: 'review';
-    pluralName: 'reviews';
-    displayName: 'Review';
+    singularName: 'subscription';
+    pluralName: 'subscriptions';
+    displayName: 'Subscription';
     description: '';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
-    review: Schema.Attribute.Text;
-    name: Schema.Attribute.String;
+    plan: Schema.Attribute.String;
+    startDate: Schema.Attribute.Date;
+    endDate: Schema.Attribute.Date;
+    wooID: Schema.Attribute.Integer & Schema.Attribute.Unique;
     user: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+    url: Schema.Attribute.String;
+    statusPlan: Schema.Attribute.Enumeration<
+      ['pending', 'active', 'on-hold', 'cancelled', 'expired', 'pending-cancel']
+    > &
+      Schema.Attribute.DefaultTo<'pending'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -63,7 +71,10 @@ export interface ApiReviewReview extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::review.review'>;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::subscription.subscription'
+    >;
   };
 }
 
@@ -536,8 +547,13 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    reviews: Schema.Attribute.Relation<'oneToMany', 'api::review.review'>;
     orders: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    subscriptions: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::subscription.subscription'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -919,7 +935,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
       'api::order.order': ApiOrderOrder;
-      'api::review.review': ApiReviewReview;
+      'api::subscription.subscription': ApiSubscriptionSubscription;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
