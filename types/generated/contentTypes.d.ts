@@ -1,11 +1,11 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
-export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
-  collectionName: 'orders';
+export interface ApiFreetrialFreetrial extends Struct.CollectionTypeSchema {
+  collectionName: 'freetrials';
   info: {
-    singularName: 'order';
-    pluralName: 'orders';
-    displayName: 'Order';
+    singularName: 'freetrial';
+    pluralName: 'freetrials';
+    displayName: 'Freetrial';
     description: '';
   };
   options: {
@@ -13,18 +13,14 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
   };
   attributes: {
     startDate: Schema.Attribute.Date;
-    expirationDate: Schema.Attribute.Date;
+    endDate: Schema.Attribute.Date;
+    instanceName: Schema.Attribute.String;
+    apiKey: Schema.Attribute.String;
+    instanceId: Schema.Attribute.String;
     user: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    selectedPlan: Schema.Attribute.Enumeration<
-      ['BASIC', 'ADVANCED', 'ENTERPRISE', 'API', 'CUSTOM']
-    >;
-    statusPlan: Schema.Attribute.Enumeration<
-      ['pending', 'available', 'expired', 'end']
-    >;
-    url: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -33,7 +29,10 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::freetrial.freetrial'
+    >;
   };
 }
 
@@ -547,12 +546,15 @@ export interface PluginUsersPermissionsUser
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    orders: Schema.Attribute.Relation<'oneToMany', 'api::order.order'>;
     name: Schema.Attribute.String;
     phone: Schema.Attribute.String;
     subscriptions: Schema.Attribute.Relation<
       'oneToMany',
       'api::subscription.subscription'
+    >;
+    freetrials: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::freetrial.freetrial'
     >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -934,7 +936,7 @@ export interface AdminTransferTokenPermission
 declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
-      'api::order.order': ApiOrderOrder;
+      'api::freetrial.freetrial': ApiFreetrialFreetrial;
       'api::subscription.subscription': ApiSubscriptionSubscription;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;

@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * order controller
+ * freetrial controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::order.order');
+module.exports = createCoreController('api::freetrial.freetrial');
