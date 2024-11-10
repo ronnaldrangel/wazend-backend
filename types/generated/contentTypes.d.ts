@@ -62,6 +62,10 @@ export interface ApiSubscriptionSubscription
       ['pending', 'active', 'on-hold', 'cancelled', 'expired', 'pending-cancel']
     > &
       Schema.Attribute.DefaultTo<'pending'>;
+    instanceName: Schema.Attribute.String;
+    apiKey: Schema.Attribute.String;
+    instanceId: Schema.Attribute.String;
+    type: Schema.Attribute.Enumeration<['CRM', 'API', 'N8N']>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

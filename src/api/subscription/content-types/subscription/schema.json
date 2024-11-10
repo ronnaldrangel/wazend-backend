@@ -45,6 +45,23 @@
         "pending-cancel"
       ],
       "default": "pending"
+    },
+    "instanceName": {
+      "type": "string"
+    },
+    "apiKey": {
+      "type": "string"
+    },
+    "instanceId": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "CRM",
+        "API",
+        "N8N"
+      ]
     }
   }
 }
