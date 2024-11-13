@@ -13,10 +13,10 @@
   "pluginOptions": {},
   "attributes": {
     "startDate": {
-      "type": "date"
+      "type": "datetime"
     },
     "endDate": {
-      "type": "date"
+      "type": "datetime"
     },
     "instanceName": {
       "type": "string"

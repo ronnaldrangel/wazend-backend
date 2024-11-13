@@ -12,8 +12,8 @@ export interface ApiFreetrialFreetrial extends Struct.CollectionTypeSchema {
     draftAndPublish: false;
   };
   attributes: {
-    startDate: Schema.Attribute.Date;
-    endDate: Schema.Attribute.Date;
+    startDate: Schema.Attribute.DateTime;
+    endDate: Schema.Attribute.DateTime;
     instanceName: Schema.Attribute.String;
     apiKey: Schema.Attribute.String;
     instanceId: Schema.Attribute.String;
@@ -50,9 +50,8 @@ export interface ApiSubscriptionSubscription
   };
   attributes: {
     plan: Schema.Attribute.String;
-    startDate: Schema.Attribute.Date;
-    endDate: Schema.Attribute.Date;
-    wooID: Schema.Attribute.Integer & Schema.Attribute.Unique;
+    startDate: Schema.Attribute.DateTime;
+    endDate: Schema.Attribute.DateTime;
     user: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
@@ -66,6 +65,9 @@ export interface ApiSubscriptionSubscription
     apiKey: Schema.Attribute.String;
     instanceId: Schema.Attribute.String;
     type: Schema.Attribute.Enumeration<['CRM', 'API', 'N8N']>;
+    email: Schema.Attribute.String;
+    password: Schema.Attribute.String;
+    billingCycle: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

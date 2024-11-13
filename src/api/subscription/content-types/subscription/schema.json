@@ -16,14 +16,10 @@
       "type": "string"
     },
     "startDate": {
-      "type": "date"
+      "type": "datetime"
     },
     "endDate": {
-      "type": "date"
-    },
-    "wooID": {
-      "unique": true,
-      "type": "integer"
+      "type": "datetime"
     },
     "user": {
       "type": "relation",
@@ -62,6 +58,15 @@
         "API",
         "N8N"
       ]
+    },
+    "email": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "billingCycle": {
+      "type": "string"
     }
   }
 }
