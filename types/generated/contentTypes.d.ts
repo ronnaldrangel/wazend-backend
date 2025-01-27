@@ -49,14 +49,12 @@ export interface ApiSubscriptionSubscription
     draftAndPublish: false;
   };
   attributes: {
-    plan: Schema.Attribute.String;
     startDate: Schema.Attribute.DateTime;
     endDate: Schema.Attribute.DateTime;
     user: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    url: Schema.Attribute.String;
     statusPlan: Schema.Attribute.Enumeration<
       ['pending', 'active', 'on-hold', 'cancelled', 'expired', 'pending-cancel']
     > &
@@ -64,10 +62,8 @@ export interface ApiSubscriptionSubscription
     instanceName: Schema.Attribute.String;
     apiKey: Schema.Attribute.String;
     instanceId: Schema.Attribute.String;
-    type: Schema.Attribute.Enumeration<['CRM', 'API', 'N8N']>;
-    email: Schema.Attribute.String;
-    password: Schema.Attribute.String;
     billingCycle: Schema.Attribute.String;
+    idWoo: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
