@@ -24,18 +24,6 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "subscriptions"
     },
-    "statusPlan": {
-      "type": "enumeration",
-      "enum": [
-        "pending",
-        "active",
-        "on-hold",
-        "cancelled",
-        "expired",
-        "pending-cancel"
-      ],
-      "default": "pending"
-    },
     "instanceName": {
       "type": "string"
     },
@@ -50,6 +38,11 @@
     },
     "idWoo": {
       "type": "integer"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true,
+      "required": false
     }
   }
 }

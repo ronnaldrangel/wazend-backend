@@ -55,15 +55,12 @@ export interface ApiSubscriptionSubscription
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    statusPlan: Schema.Attribute.Enumeration<
-      ['pending', 'active', 'on-hold', 'cancelled', 'expired', 'pending-cancel']
-    > &
-      Schema.Attribute.DefaultTo<'pending'>;
     instanceName: Schema.Attribute.String;
     apiKey: Schema.Attribute.String;
     instanceId: Schema.Attribute.String;
     billingCycle: Schema.Attribute.String;
     idWoo: Schema.Attribute.Integer;
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
