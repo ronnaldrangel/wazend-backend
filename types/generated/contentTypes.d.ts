@@ -76,6 +76,46 @@ export interface ApiSubscriptionSubscription
   };
 }
 
+export interface ApiSubscritionsWooSubscritionsWoo
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'subscritions_woos';
+  info: {
+    singularName: 'subscritions-woo';
+    pluralName: 'subscritions-woos';
+    displayName: 'SubscritionsWoo';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    id_woo: Schema.Attribute.Integer;
+    parent_id: Schema.Attribute.Integer;
+    status_woo: Schema.Attribute.String;
+    total: Schema.Attribute.Decimal;
+    customer_id: Schema.Attribute.Integer;
+    billing_period: Schema.Attribute.String;
+    billing_interval: Schema.Attribute.Integer;
+    start_date_gmt: Schema.Attribute.DateTime;
+    trial_end_date_gmt: Schema.Attribute.DateTime;
+    next_payment_date_gmt: Schema.Attribute.DateTime;
+    last_payment_date_gmt: Schema.Attribute.DateTime;
+    cancelled_date_gmt: Schema.Attribute.DateTime;
+    end_date_gmt: Schema.Attribute.DateTime;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::subscritions-woo.subscritions-woo'
+    >;
+  };
+}
+
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
   info: {
@@ -937,6 +977,7 @@ declare module '@strapi/strapi' {
     export interface ContentTypeSchemas {
       'api::freetrial.freetrial': ApiFreetrialFreetrial;
       'api::subscription.subscription': ApiSubscriptionSubscription;
+      'api::subscritions-woo.subscritions-woo': ApiSubscritionsWooSubscritionsWoo;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
