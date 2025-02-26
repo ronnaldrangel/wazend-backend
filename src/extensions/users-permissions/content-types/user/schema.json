@@ -83,11 +83,17 @@
       "target": "api::freetrial.freetrial",
       "mappedBy": "user"
     },
+    "instances": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::instance.instance",
+      "mappedBy": "user"
+    },
     "subscritions_woos": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::subscritions-woo.subscritions-woo",
-      "mappedBy": "users_permissions_user"
+      "mappedBy": "user"
     }
   }
 }

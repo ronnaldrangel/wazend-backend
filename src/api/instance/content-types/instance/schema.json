@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -21,10 +21,25 @@
     "instanceId": {
       "type": "string"
     },
-    "subscritions_woo": {
+    "startDate": {
+      "type": "datetime"
+    },
+    "endDate": {
+      "type": "datetime"
+    },
+    "billingCycle": {
+      "type": "string"
+    },
+    "idWoo": {
+      "type": "integer"
+    },
+    "isActive": {
+      "type": "boolean"
+    },
+    "user": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::subscritions-woo.subscritions-woo",
+      "target": "plugin::users-permissions.user",
       "inversedBy": "instances"
     }
   }

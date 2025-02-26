@@ -479,6 +479,7 @@ export interface PluginUsersPermissionsUser
       'oneToMany',
       'api::freetrial.freetrial'
     >;
+    instances: Schema.Attribute.Relation<'oneToMany', 'api::instance.instance'>;
     subscritions_woos: Schema.Attribute.Relation<
       'oneToMany',
       'api::subscritions-woo.subscritions-woo'
@@ -543,15 +544,20 @@ export interface ApiInstanceInstance extends Struct.CollectionTypeSchema {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     instanceName: Schema.Attribute.String;
     apiKey: Schema.Attribute.String;
     instanceId: Schema.Attribute.String;
-    subscritions_woo: Schema.Attribute.Relation<
+    startDate: Schema.Attribute.DateTime;
+    endDate: Schema.Attribute.DateTime;
+    billingCycle: Schema.Attribute.String;
+    idWoo: Schema.Attribute.Integer;
+    isActive: Schema.Attribute.Boolean;
+    user: Schema.Attribute.Relation<
       'manyToOne',
-      'api::subscritions-woo.subscritions-woo'
+      'plugin::users-permissions.user'
     >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
@@ -618,7 +624,7 @@ export interface ApiSubscritionsWooSubscritionsWoo
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     id_woo: Schema.Attribute.Integer;
@@ -634,8 +640,7 @@ export interface ApiSubscritionsWooSubscritionsWoo
     last_payment_date_gmt: Schema.Attribute.DateTime;
     cancelled_date_gmt: Schema.Attribute.DateTime;
     end_date_gmt: Schema.Attribute.DateTime;
-    instances: Schema.Attribute.Relation<'oneToMany', 'api::instance.instance'>;
-    users_permissions_user: Schema.Attribute.Relation<
+    user: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
     >;

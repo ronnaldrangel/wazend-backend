@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -51,13 +51,7 @@
     "end_date_gmt": {
       "type": "datetime"
     },
-    "instances": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::instance.instance",
-      "mappedBy": "subscritions_woo"
-    },
-    "users_permissions_user": {
+    "user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
