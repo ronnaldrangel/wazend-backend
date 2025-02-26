@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "instances",
+  "info": {
+    "singularName": "instance",
+    "pluralName": "instances",
+    "displayName": "Instance",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "instanceName": {
+      "type": "string"
+    },
+    "apiKey": {
+      "type": "string"
+    },
+    "instanceId": {
+      "type": "string"
+    },
+    "subscritions_woo": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subscritions-woo.subscritions-woo",
+      "inversedBy": "instances"
+    }
+  }
+}
