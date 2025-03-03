@@ -1,5 +1,132 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
+export interface ApiFreetrialFreetrial extends Struct.CollectionTypeSchema {
+  collectionName: 'freetrials';
+  info: {
+    singularName: 'freetrial';
+    pluralName: 'freetrials';
+    displayName: 'Freetrial';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    startDate: Schema.Attribute.DateTime;
+    endDate: Schema.Attribute.DateTime;
+    instanceName: Schema.Attribute.String;
+    apiKey: Schema.Attribute.String;
+    instanceId: Schema.Attribute.String;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    url: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::freetrial.freetrial'
+    >;
+  };
+}
+
+export interface ApiInstanceInstance extends Struct.CollectionTypeSchema {
+  collectionName: 'instances';
+  info: {
+    singularName: 'instance';
+    pluralName: 'instances';
+    displayName: 'Instance';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    instanceName: Schema.Attribute.String;
+    apiKey: Schema.Attribute.String;
+    instanceId: Schema.Attribute.String;
+    startDate: Schema.Attribute.DateTime;
+    endDate: Schema.Attribute.DateTime;
+    billingCycle: Schema.Attribute.String;
+    idWoo: Schema.Attribute.Integer;
+    isActive: Schema.Attribute.Boolean;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    server_url: Schema.Attribute.String;
+    subscription: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::subscription.subscription'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::instance.instance'
+    >;
+  };
+}
+
+export interface ApiSubscriptionSubscription
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'subscriptions';
+  info: {
+    singularName: 'subscription';
+    pluralName: 'subscriptions';
+    displayName: 'Subscription';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    id_woo: Schema.Attribute.Integer;
+    parent_id: Schema.Attribute.Integer;
+    status_woo: Schema.Attribute.String;
+    total: Schema.Attribute.Decimal;
+    customer_id: Schema.Attribute.Integer;
+    billing_period: Schema.Attribute.String;
+    billing_interval: Schema.Attribute.Integer;
+    start_date_gmt: Schema.Attribute.DateTime;
+    trial_end_date_gmt: Schema.Attribute.DateTime;
+    next_payment_date_gmt: Schema.Attribute.DateTime;
+    last_payment_date_gmt: Schema.Attribute.DateTime;
+    cancelled_date_gmt: Schema.Attribute.DateTime;
+    end_date_gmt: Schema.Attribute.DateTime;
+    user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    instances: Schema.Attribute.Relation<'oneToMany', 'api::instance.instance'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::subscription.subscription'
+    >;
+  };
+}
+
 export interface PluginUploadFile extends Struct.CollectionTypeSchema {
   collectionName: 'files';
   info: {
@@ -471,181 +598,15 @@ export interface PluginUsersPermissionsUser
     >;
     name: Schema.Attribute.String;
     phone: Schema.Attribute.String;
-    subscriptions: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::subscription.subscription'
-    >;
     freetrials: Schema.Attribute.Relation<
       'oneToMany',
       'api::freetrial.freetrial'
     >;
     instances: Schema.Attribute.Relation<'oneToMany', 'api::instance.instance'>;
-    subscritions_woos: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::subscritions-woo.subscritions-woo'
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'plugin::users-permissions.user'
-    >;
-  };
-}
-
-export interface ApiFreetrialFreetrial extends Struct.CollectionTypeSchema {
-  collectionName: 'freetrials';
-  info: {
-    singularName: 'freetrial';
-    pluralName: 'freetrials';
-    displayName: 'Freetrial';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    startDate: Schema.Attribute.DateTime;
-    endDate: Schema.Attribute.DateTime;
-    instanceName: Schema.Attribute.String;
-    apiKey: Schema.Attribute.String;
-    instanceId: Schema.Attribute.String;
-    user: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    url: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::freetrial.freetrial'
-    >;
-  };
-}
-
-export interface ApiInstanceInstance extends Struct.CollectionTypeSchema {
-  collectionName: 'instances';
-  info: {
-    singularName: 'instance';
-    pluralName: 'instances';
-    displayName: 'Instance';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    instanceName: Schema.Attribute.String;
-    apiKey: Schema.Attribute.String;
-    instanceId: Schema.Attribute.String;
-    startDate: Schema.Attribute.DateTime;
-    endDate: Schema.Attribute.DateTime;
-    billingCycle: Schema.Attribute.String;
-    idWoo: Schema.Attribute.Integer;
-    isActive: Schema.Attribute.Boolean;
-    user: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    server_url: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::instance.instance'
-    >;
-  };
-}
-
-export interface ApiSubscriptionSubscription
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'subscriptions';
-  info: {
-    singularName: 'subscription';
-    pluralName: 'subscriptions';
-    displayName: 'Subscription';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    startDate: Schema.Attribute.DateTime;
-    endDate: Schema.Attribute.DateTime;
-    user: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    instanceName: Schema.Attribute.String;
-    apiKey: Schema.Attribute.String;
-    instanceId: Schema.Attribute.String;
-    billingCycle: Schema.Attribute.String;
-    idWoo: Schema.Attribute.Integer;
-    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<
+    subscriptions: Schema.Attribute.Relation<
       'oneToMany',
       'api::subscription.subscription'
     >;
-  };
-}
-
-export interface ApiSubscritionsWooSubscritionsWoo
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'subscritions_woos';
-  info: {
-    singularName: 'subscritions-woo';
-    pluralName: 'subscritions-woos';
-    displayName: 'SubscritionsWoo';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    id_woo: Schema.Attribute.Integer;
-    parent_id: Schema.Attribute.Integer;
-    status_woo: Schema.Attribute.String;
-    total: Schema.Attribute.Decimal;
-    customer_id: Schema.Attribute.Integer;
-    billing_period: Schema.Attribute.String;
-    billing_interval: Schema.Attribute.Integer;
-    start_date_gmt: Schema.Attribute.DateTime;
-    trial_end_date_gmt: Schema.Attribute.DateTime;
-    next_payment_date_gmt: Schema.Attribute.DateTime;
-    last_payment_date_gmt: Schema.Attribute.DateTime;
-    cancelled_date_gmt: Schema.Attribute.DateTime;
-    end_date_gmt: Schema.Attribute.DateTime;
-    user: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -656,7 +617,7 @@ export interface ApiSubscritionsWooSubscritionsWoo
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::subscritions-woo.subscritions-woo'
+      'plugin::users-permissions.user'
     >;
   };
 }
@@ -1026,6 +987,9 @@ export interface AdminTransferTokenPermission
 declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
+      'api::freetrial.freetrial': ApiFreetrialFreetrial;
+      'api::instance.instance': ApiInstanceInstance;
+      'api::subscription.subscription': ApiSubscriptionSubscription;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
@@ -1036,10 +1000,6 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::freetrial.freetrial': ApiFreetrialFreetrial;
-      'api::instance.instance': ApiInstanceInstance;
-      'api::subscription.subscription': ApiSubscriptionSubscription;
-      'api::subscritions-woo.subscritions-woo': ApiSubscritionsWooSubscritionsWoo;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
       'admin::role': AdminRole;

@@ -44,6 +44,12 @@
     },
     "server_url": {
       "type": "string"
+    },
+    "subscription": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subscription.subscription",
+      "inversedBy": "instances"
     }
   }
 }

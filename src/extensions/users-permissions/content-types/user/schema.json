@@ -71,12 +71,6 @@
     "phone": {
       "type": "string"
     },
-    "subscriptions": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::subscription.subscription",
-      "mappedBy": "user"
-    },
     "freetrials": {
       "type": "relation",
       "relation": "oneToMany",
@@ -89,10 +83,10 @@
       "target": "api::instance.instance",
       "mappedBy": "user"
     },
-    "subscritions_woos": {
+    "subscriptions": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::subscritions-woo.subscritions-woo",
+      "target": "api::subscription.subscription",
       "mappedBy": "user"
     }
   }

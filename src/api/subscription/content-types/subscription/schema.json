@@ -12,10 +12,43 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "startDate": {
+    "id_woo": {
+      "type": "integer"
+    },
+    "parent_id": {
+      "type": "integer"
+    },
+    "status_woo": {
+      "type": "string"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "customer_id": {
+      "type": "integer"
+    },
+    "billing_period": {
+      "type": "string"
+    },
+    "billing_interval": {
+      "type": "integer"
+    },
+    "start_date_gmt": {
       "type": "datetime"
     },
-    "endDate": {
+    "trial_end_date_gmt": {
+      "type": "datetime"
+    },
+    "next_payment_date_gmt": {
+      "type": "datetime"
+    },
+    "last_payment_date_gmt": {
+      "type": "datetime"
+    },
+    "cancelled_date_gmt": {
+      "type": "datetime"
+    },
+    "end_date_gmt": {
       "type": "datetime"
     },
     "user": {
@@ -24,25 +57,11 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "subscriptions"
     },
-    "instanceName": {
-      "type": "string"
-    },
-    "apiKey": {
-      "type": "string"
-    },
-    "instanceId": {
-      "type": "string"
-    },
-    "billingCycle": {
-      "type": "string"
-    },
-    "idWoo": {
-      "type": "integer"
-    },
-    "isActive": {
-      "type": "boolean",
-      "default": true,
-      "required": false
+    "instances": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::instance.instance",
+      "mappedBy": "subscription"
     }
   }
 }
