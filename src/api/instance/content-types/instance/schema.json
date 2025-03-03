@@ -42,7 +42,7 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "instances"
     },
-    "url": {
+    "server_url": {
       "type": "string"
     }
   }
