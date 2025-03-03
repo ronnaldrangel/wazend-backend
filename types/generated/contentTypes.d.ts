@@ -615,12 +615,14 @@ export interface ApiStoreStore extends Struct.CollectionTypeSchema {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     name: Schema.Attribute.String;
     description: Schema.Attribute.String;
     price: Schema.Attribute.String;
+    button: Schema.Attribute.String;
+    image: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

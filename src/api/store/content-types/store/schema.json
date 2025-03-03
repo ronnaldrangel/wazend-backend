@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -19,6 +19,12 @@
       "type": "string"
     },
     "price": {
+      "type": "string"
+    },
+    "button": {
+      "type": "string"
+    },
+    "image": {
       "type": "string"
     }
   }
