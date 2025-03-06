@@ -516,7 +516,7 @@ export interface ApiFreetrialFreetrial extends Struct.CollectionTypeSchema {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    url: Schema.Attribute.String;
+    server_url: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -547,9 +547,6 @@ export interface ApiInstanceInstance extends Struct.CollectionTypeSchema {
     instanceName: Schema.Attribute.String;
     apiKey: Schema.Attribute.String;
     instanceId: Schema.Attribute.String;
-    startDate: Schema.Attribute.DateTime;
-    endDate: Schema.Attribute.DateTime;
-    billingCycle: Schema.Attribute.String;
     idWoo: Schema.Attribute.Integer;
     isActive: Schema.Attribute.Boolean;
     user: Schema.Attribute.Relation<

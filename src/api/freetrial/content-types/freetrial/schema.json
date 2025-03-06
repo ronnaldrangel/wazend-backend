@@ -33,7 +33,7 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "freetrials"
     },
-    "url": {
+    "server_url": {
       "type": "string"
     }
   }

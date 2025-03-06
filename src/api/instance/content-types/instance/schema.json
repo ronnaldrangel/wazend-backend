@@ -21,15 +21,6 @@
     "instanceId": {
       "type": "string"
     },
-    "startDate": {
-      "type": "datetime"
-    },
-    "endDate": {
-      "type": "datetime"
-    },
-    "billingCycle": {
-      "type": "string"
-    },
     "idWoo": {
       "type": "integer"
     },
