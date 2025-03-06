@@ -582,15 +582,17 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     singularName: 'product';
     pluralName: 'products';
     displayName: 'Product';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     name: Schema.Attribute.String;
     billing_period: Schema.Attribute.String;
     billing_interval: Schema.Attribute.Integer;
     id_woo_product: Schema.Attribute.Integer;
+    instances: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -666,6 +668,7 @@ export interface ApiSubscriptionSubscription
       'plugin::users-permissions.user'
     >;
     instances: Schema.Attribute.Relation<'oneToMany', 'api::instance.instance'>;
+    payment_method_title: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

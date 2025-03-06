@@ -4,10 +4,11 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "Product"
+    "displayName": "Product",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -21,6 +22,9 @@
       "type": "integer"
     },
     "id_woo_product": {
+      "type": "integer"
+    },
+    "instances": {
       "type": "integer"
     }
   }

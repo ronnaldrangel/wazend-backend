@@ -62,6 +62,9 @@
       "relation": "oneToMany",
       "target": "api::instance.instance",
       "mappedBy": "subscription"
+    },
+    "payment_method_title": {
+      "type": "string"
     }
   }
 }
