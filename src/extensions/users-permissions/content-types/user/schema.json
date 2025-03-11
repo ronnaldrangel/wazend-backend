@@ -77,12 +77,6 @@
       "target": "api::freetrial.freetrial",
       "mappedBy": "user"
     },
-    "instances": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::instance.instance",
-      "mappedBy": "user"
-    },
     "subscriptions": {
       "type": "relation",
       "relation": "oneToMany",

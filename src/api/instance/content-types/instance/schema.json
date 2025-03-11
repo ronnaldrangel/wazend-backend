@@ -21,18 +21,6 @@
     "instanceId": {
       "type": "string"
     },
-    "idWoo": {
-      "type": "integer"
-    },
-    "isActive": {
-      "type": "boolean"
-    },
-    "user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "instances"
-    },
     "server_url": {
       "type": "string"
     },

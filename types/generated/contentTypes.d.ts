@@ -475,7 +475,6 @@ export interface PluginUsersPermissionsUser
       'oneToMany',
       'api::freetrial.freetrial'
     >;
-    instances: Schema.Attribute.Relation<'oneToMany', 'api::instance.instance'>;
     subscriptions: Schema.Attribute.Relation<
       'oneToMany',
       'api::subscription.subscription'
@@ -547,12 +546,6 @@ export interface ApiInstanceInstance extends Struct.CollectionTypeSchema {
     instanceName: Schema.Attribute.String;
     apiKey: Schema.Attribute.String;
     instanceId: Schema.Attribute.String;
-    idWoo: Schema.Attribute.Integer;
-    isActive: Schema.Attribute.Boolean;
-    user: Schema.Attribute.Relation<
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
     server_url: Schema.Attribute.String;
     subscription: Schema.Attribute.Relation<
       'manyToOne',
