@@ -29,6 +29,9 @@
       "relation": "manyToOne",
       "target": "api::subscription.subscription",
       "inversedBy": "instances"
+    },
+    "groupList": {
+      "type": "json"
     }
   }
 }

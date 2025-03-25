@@ -551,6 +551,7 @@ export interface ApiInstanceInstance extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::subscription.subscription'
     >;
+    groupList: Schema.Attribute.JSON;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
