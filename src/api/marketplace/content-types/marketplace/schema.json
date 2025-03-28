@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "marketplaces",
+  "info": {
+    "singularName": "marketplace",
+    "pluralName": "marketplaces",
+    "displayName": "Marketplace"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "shortDescription": {
+      "type": "string"
+    },
+    "price": {
+      "type": "integer"
+    },
+    "lastUpdate": {
+      "type": "date"
+    }
+  }
+}

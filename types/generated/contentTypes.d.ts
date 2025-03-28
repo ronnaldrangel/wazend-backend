@@ -494,6 +494,38 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiBulletinBulletin extends Struct.CollectionTypeSchema {
+  collectionName: 'bulletins';
+  info: {
+    singularName: 'bulletin';
+    pluralName: 'bulletins';
+    displayName: 'Bulletin';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    description: Schema.Attribute.String;
+    button: Schema.Attribute.String;
+    img: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    isCheckout: Schema.Attribute.Boolean;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::bulletin.bulletin'
+    >;
+  };
+}
+
 export interface ApiFreetrialFreetrial extends Struct.CollectionTypeSchema {
   collectionName: 'freetrials';
   info: {
@@ -563,6 +595,36 @@ export interface ApiInstanceInstance extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::instance.instance'
+    >;
+  };
+}
+
+export interface ApiMarketplaceMarketplace extends Struct.CollectionTypeSchema {
+  collectionName: 'marketplaces';
+  info: {
+    singularName: 'marketplace';
+    pluralName: 'marketplaces';
+    displayName: 'Marketplace';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Schema.Attribute.String;
+    shortDescription: Schema.Attribute.String;
+    price: Schema.Attribute.Integer;
+    lastUpdate: Schema.Attribute.Date;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::marketplace.marketplace'
     >;
   };
 }
@@ -1050,8 +1112,10 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::bulletin.bulletin': ApiBulletinBulletin;
       'api::freetrial.freetrial': ApiFreetrialFreetrial;
       'api::instance.instance': ApiInstanceInstance;
+      'api::marketplace.marketplace': ApiMarketplaceMarketplace;
       'api::product.product': ApiProductProduct;
       'api::store.store': ApiStoreStore;
       'api::subscription.subscription': ApiSubscriptionSubscription;
