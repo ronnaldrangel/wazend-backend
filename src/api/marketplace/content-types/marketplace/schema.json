@@ -4,7 +4,8 @@
   "info": {
     "singularName": "marketplace",
     "pluralName": "marketplaces",
-    "displayName": "Marketplace"
+    "displayName": "Marketplace",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -22,6 +23,36 @@
     },
     "lastUpdate": {
       "type": "date"
+    },
+    "img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "videoUrl": {
+      "type": "string"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "marketplaces"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "plugin",
+        "template"
+      ]
     }
   }
 }

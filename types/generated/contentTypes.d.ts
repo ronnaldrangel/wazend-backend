@@ -479,6 +479,10 @@ export interface PluginUsersPermissionsUser
       'oneToMany',
       'api::subscription.subscription'
     >;
+    marketplaces: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::marketplace.marketplace'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -605,6 +609,7 @@ export interface ApiMarketplaceMarketplace extends Struct.CollectionTypeSchema {
     singularName: 'marketplace';
     pluralName: 'marketplaces';
     displayName: 'Marketplace';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -614,6 +619,14 @@ export interface ApiMarketplaceMarketplace extends Struct.CollectionTypeSchema {
     shortDescription: Schema.Attribute.String;
     price: Schema.Attribute.Integer;
     lastUpdate: Schema.Attribute.Date;
+    img: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    description: Schema.Attribute.Blocks;
+    videoUrl: Schema.Attribute.String;
+    users_permissions_user: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    type: Schema.Attribute.Enumeration<['plugin', 'template']>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

@@ -82,6 +82,12 @@
       "relation": "oneToMany",
       "target": "api::subscription.subscription",
       "mappedBy": "user"
+    },
+    "marketplaces": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::marketplace.marketplace",
+      "mappedBy": "users_permissions_user"
     }
   }
 }
