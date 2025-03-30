@@ -21,9 +21,6 @@
     "price": {
       "type": "integer"
     },
-    "lastUpdate": {
-      "type": "date"
-    },
     "img": {
       "type": "media",
       "multiple": false,
@@ -38,7 +35,7 @@
     "description": {
       "type": "blocks"
     },
-    "videoUrl": {
+    "youtubeId": {
       "type": "string"
     },
     "users_permissions_user": {
@@ -53,6 +50,9 @@
         "plugin",
         "template"
       ]
+    },
+    "buttonUrl": {
+      "type": "string"
     }
   }
 }

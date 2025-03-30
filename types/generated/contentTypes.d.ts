@@ -618,15 +618,15 @@ export interface ApiMarketplaceMarketplace extends Struct.CollectionTypeSchema {
     title: Schema.Attribute.String;
     shortDescription: Schema.Attribute.String;
     price: Schema.Attribute.Integer;
-    lastUpdate: Schema.Attribute.Date;
     img: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     description: Schema.Attribute.Blocks;
-    videoUrl: Schema.Attribute.String;
+    youtubeId: Schema.Attribute.String;
     users_permissions_user: Schema.Attribute.Relation<
       'manyToOne',
       'plugin::users-permissions.user'
     >;
     type: Schema.Attribute.Enumeration<['plugin', 'template']>;
+    buttonUrl: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -671,35 +671,6 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::product.product'
     >;
-  };
-}
-
-export interface ApiStoreStore extends Struct.CollectionTypeSchema {
-  collectionName: 'stores';
-  info: {
-    singularName: 'store';
-    pluralName: 'stores';
-    displayName: 'Store';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    name: Schema.Attribute.String;
-    description: Schema.Attribute.String;
-    price: Schema.Attribute.String;
-    button: Schema.Attribute.String;
-    image: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    publishedAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::store.store'>;
   };
 }
 
@@ -1130,7 +1101,6 @@ declare module '@strapi/strapi' {
       'api::instance.instance': ApiInstanceInstance;
       'api::marketplace.marketplace': ApiMarketplaceMarketplace;
       'api::product.product': ApiProductProduct;
-      'api::store.store': ApiStoreStore;
       'api::subscription.subscription': ApiSubscriptionSubscription;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;
