@@ -588,6 +588,8 @@ export interface ApiInstanceInstance extends Struct.CollectionTypeSchema {
       'api::subscription.subscription'
     >;
     groupList: Schema.Attribute.JSON;
+    isReseller: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    resellerName: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

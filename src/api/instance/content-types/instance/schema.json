@@ -32,6 +32,13 @@
     },
     "groupList": {
       "type": "json"
+    },
+    "isReseller": {
+      "type": "boolean",
+      "default": false
+    },
+    "resellerName": {
+      "type": "string"
     }
   }
 }
