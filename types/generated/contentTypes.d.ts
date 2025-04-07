@@ -676,6 +676,33 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiServerServer extends Struct.CollectionTypeSchema {
+  collectionName: 'servers';
+  info: {
+    singularName: 'server';
+    pluralName: 'servers';
+    displayName: 'Server';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    url: Schema.Attribute.String;
+    apiKey: Schema.Attribute.String;
+    slots: Schema.Attribute.Integer;
+    available: Schema.Attribute.Boolean;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::server.server'>;
+  };
+}
+
 export interface ApiSubscriptionSubscription
   extends Struct.CollectionTypeSchema {
   collectionName: 'subscriptions';
@@ -1103,6 +1130,7 @@ declare module '@strapi/strapi' {
       'api::instance.instance': ApiInstanceInstance;
       'api::marketplace.marketplace': ApiMarketplaceMarketplace;
       'api::product.product': ApiProductProduct;
+      'api::server.server': ApiServerServer;
       'api::subscription.subscription': ApiSubscriptionSubscription;
       'admin::permission': AdminPermission;
       'admin::user': AdminUser;

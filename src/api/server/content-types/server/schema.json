@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "servers",
+  "info": {
+    "singularName": "server",
+    "pluralName": "servers",
+    "displayName": "Server"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "apiKey": {
+      "type": "string"
+    },
+    "slots": {
+      "type": "integer"
+    },
+    "available": {
+      "type": "boolean"
+    }
+  }
+}
