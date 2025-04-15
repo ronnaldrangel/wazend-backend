@@ -692,6 +692,7 @@ export interface ApiServerServer extends Struct.CollectionTypeSchema {
     apiKey: Schema.Attribute.String;
     slots: Schema.Attribute.Integer;
     available: Schema.Attribute.Boolean;
+    limit_slots: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

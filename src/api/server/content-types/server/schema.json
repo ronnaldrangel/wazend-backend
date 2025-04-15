@@ -23,6 +23,9 @@
     },
     "available": {
       "type": "boolean"
+    },
+    "limit_slots": {
+      "type": "integer"
     }
   }
 }
