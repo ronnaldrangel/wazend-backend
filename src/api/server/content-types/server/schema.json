@@ -4,10 +4,11 @@
   "info": {
     "singularName": "server",
     "pluralName": "servers",
-    "displayName": "Server"
+    "displayName": "Server",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {

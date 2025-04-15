@@ -682,9 +682,10 @@ export interface ApiServerServer extends Struct.CollectionTypeSchema {
     singularName: 'server';
     pluralName: 'servers';
     displayName: 'Server';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     url: Schema.Attribute.String;
