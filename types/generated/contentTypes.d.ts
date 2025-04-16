@@ -661,6 +661,9 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     billing_interval: Schema.Attribute.Integer;
     id_woo_product: Schema.Attribute.Integer;
     instances: Schema.Attribute.Integer;
+    features: Schema.Attribute.JSON;
+    isApi: Schema.Attribute.Boolean;
+    price: Schema.Attribute.Decimal;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

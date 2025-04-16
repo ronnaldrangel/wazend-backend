@@ -26,6 +26,15 @@
     },
     "instances": {
       "type": "integer"
+    },
+    "features": {
+      "type": "json"
+    },
+    "isApi": {
+      "type": "boolean"
+    },
+    "price": {
+      "type": "decimal"
     }
   }
 }
