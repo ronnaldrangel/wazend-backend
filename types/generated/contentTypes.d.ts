@@ -664,6 +664,7 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     features: Schema.Attribute.JSON;
     isApi: Schema.Attribute.Boolean;
     price: Schema.Attribute.Decimal;
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
