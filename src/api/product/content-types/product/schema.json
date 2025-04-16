@@ -21,9 +21,6 @@
     "billing_interval": {
       "type": "integer"
     },
-    "id_woo_product": {
-      "type": "integer"
-    },
     "instances": {
       "type": "integer"
     },
@@ -37,14 +34,18 @@
       "type": "decimal"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "woo_id": {
+      "type": "integer"
     }
   }
 }

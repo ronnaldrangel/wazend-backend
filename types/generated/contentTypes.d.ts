@@ -659,12 +659,12 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String;
     billing_period: Schema.Attribute.String;
     billing_interval: Schema.Attribute.Integer;
-    id_woo_product: Schema.Attribute.Integer;
     instances: Schema.Attribute.Integer;
     features: Schema.Attribute.JSON;
     isApi: Schema.Attribute.Boolean;
     price: Schema.Attribute.Decimal;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    woo_id: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
