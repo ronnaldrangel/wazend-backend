@@ -39,6 +39,11 @@
     },
     "resellerName": {
       "type": "string"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true,
+      "required": false
     }
   }
 }

@@ -552,6 +552,7 @@ export interface ApiFreetrialFreetrial extends Struct.CollectionTypeSchema {
       'plugin::users-permissions.user'
     >;
     server_url: Schema.Attribute.String;
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -590,6 +591,7 @@ export interface ApiInstanceInstance extends Struct.CollectionTypeSchema {
     groupList: Schema.Attribute.JSON;
     isReseller: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     resellerName: Schema.Attribute.String;
+    isActive: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

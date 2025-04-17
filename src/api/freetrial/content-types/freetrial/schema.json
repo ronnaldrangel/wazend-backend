@@ -35,6 +35,10 @@
     },
     "server_url": {
       "type": "string"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
