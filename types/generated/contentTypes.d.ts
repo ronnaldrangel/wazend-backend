@@ -743,6 +743,8 @@ export interface ApiSubscriptionSubscription
     >;
     instances: Schema.Attribute.Relation<'oneToMany', 'api::instance.instance'>;
     payment_method_title: Schema.Attribute.String;
+    product_name: Schema.Attribute.String;
+    instances_limit: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

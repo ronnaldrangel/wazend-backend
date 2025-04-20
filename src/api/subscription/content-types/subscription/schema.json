@@ -65,6 +65,12 @@
     },
     "payment_method_title": {
       "type": "string"
+    },
+    "product_name": {
+      "type": "string"
+    },
+    "instances_limit": {
+      "type": "integer"
     }
   }
 }
