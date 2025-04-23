@@ -699,6 +699,7 @@ export interface ApiServerServer extends Struct.CollectionTypeSchema {
     slots: Schema.Attribute.Integer;
     available: Schema.Attribute.Boolean;
     limit_slots: Schema.Attribute.Integer;
+    freetrial: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

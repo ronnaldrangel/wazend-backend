@@ -26,6 +26,10 @@
     },
     "limit_slots": {
       "type": "integer"
+    },
+    "freetrial": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
