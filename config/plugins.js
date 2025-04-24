@@ -1,23 +1,35 @@
 module.exports = ({ env }) => ({
   // ...
+  // email: {
+  //   config: {
+  //     provider: 'nodemailer',
+  //     providerOptions: {
+  //       host: env('SMTP_HOST', 'smtp.example.com'),
+  //       port: env('SMTP_PORT', 587),
+  //       auth: {
+  //         user: env('SMTP_USERNAME'),
+  //         pass: env('SMTP_PASSWORD'),
+  //       },
+  //       // ... any custom nodemailer options
+  //     },
+  //     settings: {
+  //       defaultFrom: 'Wazend <soporte@wazend.net>',
+  //       defaultReplyTo: 'soporte@wazend.net',
+  //     },
+  //   },
+  // },
   email: {
     config: {
-      provider: 'nodemailer',
+      provider: 'strapi-provider-email-resend',
       providerOptions: {
-        host: env('SMTP_HOST', 'smtp.example.com'),
-        port: env('SMTP_PORT', 587),
-        auth: {
-          user: env('SMTP_USERNAME'),
-          pass: env('SMTP_PASSWORD'),
-        },
-        // ... any custom nodemailer options
+        apiKey: env('RESEND_API_KEY'), // Required
       },
       settings: {
-        defaultFrom: 'Wazend <soporte@wazend.net>',
-        defaultReplyTo: 'soporte@wazend.net',
+        defaultFrom: env('RESEND_FROM'),
+        defaultReplyTo: env('RESEND_USERNAME'),
       },
-    },
-  },
+    }
+  }, 
   // ...
   // Otras configuraciones de plugins
   "users-permissions": {
