@@ -30,6 +30,12 @@
     "freetrial": {
       "type": "boolean",
       "default": false
+    },
+    "projectName": {
+      "type": "string"
+    },
+    "serviceName": {
+      "type": "string"
     }
   }
 }

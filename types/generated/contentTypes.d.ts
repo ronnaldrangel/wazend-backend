@@ -613,9 +613,10 @@ export interface ApiLogLog extends Struct.CollectionTypeSchema {
     singularName: 'log';
     pluralName: 'logs';
     displayName: 'Log';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     event_type: Schema.Attribute.String;
@@ -727,6 +728,8 @@ export interface ApiServerServer extends Struct.CollectionTypeSchema {
     available: Schema.Attribute.Boolean;
     limit_slots: Schema.Attribute.Integer;
     freetrial: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    projectName: Schema.Attribute.String;
+    serviceName: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

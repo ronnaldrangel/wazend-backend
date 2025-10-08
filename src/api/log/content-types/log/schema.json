@@ -4,10 +4,11 @@
   "info": {
     "singularName": "log",
     "pluralName": "logs",
-    "displayName": "Log"
+    "displayName": "Log",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
