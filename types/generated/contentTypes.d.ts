@@ -483,6 +483,7 @@ export interface PluginUsersPermissionsUser
       'oneToMany',
       'api::marketplace.marketplace'
     >;
+    customer: Schema.Attribute.Relation<'oneToOne', 'api::customer.customer'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -526,6 +527,42 @@ export interface ApiBulletinBulletin extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::bulletin.bulletin'
+    >;
+  };
+}
+
+export interface ApiCustomerCustomer extends Struct.CollectionTypeSchema {
+  collectionName: 'customers';
+  info: {
+    singularName: 'customer';
+    pluralName: 'customers';
+    displayName: 'Customer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    source_customer_id: Schema.Attribute.Integer;
+    email: Schema.Attribute.String;
+    first_name: Schema.Attribute.String;
+    last_name: Schema.Attribute.String;
+    role: Schema.Attribute.String;
+    username: Schema.Attribute.String;
+    users_permissions_user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::customer.customer'
     >;
   };
 }
@@ -1167,6 +1204,7 @@ declare module '@strapi/strapi' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::bulletin.bulletin': ApiBulletinBulletin;
+      'api::customer.customer': ApiCustomerCustomer;
       'api::freetrial.freetrial': ApiFreetrialFreetrial;
       'api::instance.instance': ApiInstanceInstance;
       'api::log.log': ApiLogLog;
