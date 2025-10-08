@@ -607,6 +607,33 @@ export interface ApiInstanceInstance extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiLogLog extends Struct.CollectionTypeSchema {
+  collectionName: 'logs';
+  info: {
+    singularName: 'log';
+    pluralName: 'logs';
+    displayName: 'Log';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    event_type: Schema.Attribute.String;
+    mail: Schema.Attribute.String;
+    info: Schema.Attribute.String;
+    created: Schema.Attribute.DateTime;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::log.log'>;
+  };
+}
+
 export interface ApiMarketplaceMarketplace extends Struct.CollectionTypeSchema {
   collectionName: 'marketplaces';
   info: {
@@ -1139,6 +1166,7 @@ declare module '@strapi/strapi' {
       'api::bulletin.bulletin': ApiBulletinBulletin;
       'api::freetrial.freetrial': ApiFreetrialFreetrial;
       'api::instance.instance': ApiInstanceInstance;
+      'api::log.log': ApiLogLog;
       'api::marketplace.marketplace': ApiMarketplaceMarketplace;
       'api::product.product': ApiProductProduct;
       'api::server.server': ApiServerServer;
