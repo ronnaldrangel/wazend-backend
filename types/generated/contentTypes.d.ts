@@ -733,6 +733,10 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     price: Schema.Attribute.Decimal;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     woo_id: Schema.Attribute.Integer;
+    subscription: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::subscription.subscription'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -817,6 +821,7 @@ export interface ApiSubscriptionSubscription
     currency: Schema.Attribute.String;
     product_id: Schema.Attribute.Integer;
     variation_id: Schema.Attribute.Integer;
+    product: Schema.Attribute.Relation<'oneToOne', 'api::product.product'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

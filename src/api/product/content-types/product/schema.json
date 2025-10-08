@@ -46,6 +46,12 @@
     },
     "woo_id": {
       "type": "integer"
+    },
+    "subscription": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subscription.subscription",
+      "mappedBy": "product"
     }
   }
 }

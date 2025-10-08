@@ -80,6 +80,12 @@
     },
     "variation_id": {
       "type": "integer"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product",
+      "inversedBy": "subscription"
     }
   }
 }
