@@ -814,6 +814,9 @@ export interface ApiSubscriptionSubscription
     payment_method_title: Schema.Attribute.String;
     product_name: Schema.Attribute.String;
     instances_limit: Schema.Attribute.Integer;
+    currency: Schema.Attribute.String;
+    product_id: Schema.Attribute.Integer;
+    variation_id: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;

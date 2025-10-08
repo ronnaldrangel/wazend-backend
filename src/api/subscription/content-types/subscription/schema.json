@@ -71,6 +71,15 @@
     },
     "instances_limit": {
       "type": "integer"
+    },
+    "currency": {
+      "type": "string"
+    },
+    "product_id": {
+      "type": "integer"
+    },
+    "variation_id": {
+      "type": "integer"
     }
   }
 }
