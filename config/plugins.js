@@ -13,8 +13,8 @@ module.exports = ({ env }) => ({
         // ... any custom nodemailer options
       },
       settings: {
-        defaultFrom: 'Wazend <soporte@wazend.net>',
-        defaultReplyTo: 'soporte@wazend.net',
+        defaultFrom: env('EMAIL_FROM', 'hello@example.com'),
+        defaultReplyTo: env('EMAIL_REPLY_TO', 'hello@example.com'),
       },
     },
   },
